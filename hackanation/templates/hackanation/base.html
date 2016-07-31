@@ -1,0 +1,70 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'hackanation/style.css' %}" />
+
+<script src="https://use.fontawesome.com/4eb8b543df.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<div id="main" class="lefted">
+
+
+  <div id="buttons">
+    <div class="button button-red" id="prize-btn">
+      <div class="button-content">
+        <h2 class="button-title">Discover prizes</h2>
+        <p class="button-text">Find prizes with low competition, or see the most popular ones</p>
+      </div>
+      <div class="button-footer btnf-red"> </div>
+    </div>
+    <div class="button button-blue">
+      <div class="button-content">
+        <h2 class="button-title">Explore the data</h2>
+        <p class="button-text">Data, metadata, metametadata, and so on</p>
+      </div>
+      <div class="button-footer btnf-blue"> </div>
+    </div>
+  </div>
+
+  <div id="logo-bg" class="lefted-b">
+    <a href="#" id="logo-a">
+      <img src= {% static "hackanation/images/logo.png" %} id="logo" class="lefted-log" />
+    </a>
+  </div>
+
+</div>
+
+
+<script>
+
+  function load(url) {
+    w = $("#main").width();
+    if(w==390) {
+      document.location=url;
+    } else {
+      $("#main").animate({width: 390 }, function() {
+          document.location=url;
+      });
+    }
+  }
+
+  function home(ev) {
+    ev.preventDefault();
+    if ($("#main").hasClass("lefted") ){
+    $("#main").width(390);
+    $("#main").removeClass("lefted");
+    $("#main").animate( {width: $("body").width() }, function(){
+         document.location = "/";
+     });
+    } else {
+      document.location = "/";
+    }
+  }
+  $('#logo-a').click( function(ev){
+      home(ev);
+  });
+  $('#prize-btn').click( function(ev){
+      load("under-rated-prizes");
+  });
+</script>
+

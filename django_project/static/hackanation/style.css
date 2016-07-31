@@ -1,0 +1,224 @@
+li a {
+    color: green;
+}
+
+body, html {
+margin: 0;
+padding: 0;
+font-family: Montserrat, sans-serif;
+}
+
+body {
+  background-color: #F0F0F0;
+}
+
+#main {
+  float:left;
+    margin: 0;
+    padding: 0;
+    background-image: url("images/Silde-Four.jpg");
+    background-position: right;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: fixed;;
+  z-index: 100;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.lefted {
+  width: 390px !important;
+}
+#logo {
+  width: 300px;
+}
+
+#logo-bg {
+  background-color: #2a2a2a;
+  opacity: 0.8;
+  width: 320px;
+  margin-top: 40px;
+  padding: 50px;
+  padding-right: 20px;
+  float: left;
+  z-index: 101;
+}
+
+
+#buttons {
+  float:right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 45px;
+}
+
+.button {
+  width: 300px;
+  height: 150px;
+  margin-top: 30px
+}
+.button:hover {
+  cursor: pointer;
+}
+.button0:hover {
+  width: 304px;
+  height: 154px;
+  margin-left: -2px;
+  margin-right: -2px;
+  margin-top: 28px;
+  margin-bottom: -2px;
+}
+.button-blue {
+  background-color: #3D88B4;
+}
+.button-red {
+  background-color: #CF1052;
+}
+.button-content {
+  color: white;
+  padding: 20px;
+  height: calc( 80% - 20px );
+}
+.button-title {
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 15px;
+}
+.button-text {
+  font-style: italic;
+  opacity: 0.8;
+}
+.button-footer {
+  height: 10%;
+  width: 100%;
+}
+.btnf-blue {
+  background-color: #71B2D8;
+}
+.btnf-red {
+  background-color: #EF266A;
+}
+
+
+
+
+#right {
+  position: absolute;
+  overflow-y: visible;
+  left: 390px;
+  width: calc( 100% - 390px - 100px );
+  background-color: #F0F0F0;
+  height: calc( 100% - 100px );
+}
+#right-content {
+  padding: 50px;
+  width: 100%;
+}
+.grid-item {
+  width: 300px;
+}
+.box {
+  overflow: hidden;
+  background-color: #F0F5F8;
+  width: 300px; 
+  height: 100px;
+  padding: 0;
+  margin-bottom: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.box-green .box-link {
+  color: #66BB6A;
+}
+.box-green .box-head {
+  background-color: #66BB6A;
+font-size: 14px;
+}
+.box-link {
+  text-decoration: none;
+  color: inherit;
+}
+.box-head {
+  float:right;
+  background-color:#EF266A;
+  height: 100%;
+  width: 100px;
+  color: white;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.box-green .box-head-txt {
+font-size: 25px;
+padding-top: 36px;
+}
+.box-head-txt {
+  font-size: 50px;
+  padding-top: 15px;
+  text-align: center;
+}
+.box-head-img {
+  text-align: center;
+}
+.box-left {
+  float:left;
+  padding: 5px;
+padding-top: 0;
+  padding-left: 20px;
+  width: 170px;
+}
+.box-left-title {
+  color:#EF266A;
+}
+.box-left-text {
+  font-size: 12px;
+  color: #555;
+}
+#right-title {
+  padding-top: 0;
+  margin-top: 0;
+  font-weight: 100;
+  padding-bottom: 0px;
+}
+#right-title-bg {
+  padding: 50px;
+  margin-top: 50px;
+  padding-bottom: 0px;
+}
+#dropdown {
+  color: #3789B0;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
+#dropper {
+  background: transparent;
+  width: auto;
+   padding: 5px;
+   border: 0;
+   border-radius: 0;
+   height: 50px;
+  font-size: inherit;
+   -webkit-appearance: none;
+  color: #3789B0;
+  text-decoration: none;
+  text-align: center;
+}
+.fa-blue {
+  color: #3790B0;
+}
+
+#search-btn:hover {
+  cursor: pointer;
+}
+#search-btn {
+   position: absolute;
+   right: 0px;
+   top: 120px;
+   font-size: 20px;
+}

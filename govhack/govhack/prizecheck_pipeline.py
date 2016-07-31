@@ -1,0 +1,44 @@
+from scrapy.exceptions import DropItem
+
+rename_dict = {
+"ABS - That thing we all need"  :  "That thing we all need",
+"best innovative hack utilising Statistics NZ data"  :  None,
+"Geospatial Prize"  :  "Most Innovative Use Of Location-Based Information Prize",
+"Helping small businesses make better decisions"  :  "How can City of Melbourne data be used to help businesses make better decisions?",
+"How can we better understand how councils are performing?"  :  None,
+"How can we reduce the incidence of dog attacks? / How can we ensure that New Zealanders are excellent dog owners?"  :  None,
+"Land Use and Development"  :  "Logan Land Use and Development",
+"Melbourne's Ecology"  :  None,
+"NZ Best Data Journalism"  :  "Data Journalism 1st",
+"NZ Best Open Government"  :  "Open Government 1st",
+"Showcase Whanganui"  :  None,
+"Student Dropout Rates"  :  "Student Droput Rates",
+"Supporing the Best of Brisbane"  :  "Supporting the Best of Brisbane",
+"The Northern Agricultural Region Prize"  :  "Sustainable Coastlines Prize",
+"The Science Sandpit -  a cutting edge concept"  :  "Create a Cutting Edge Concept - The Science Sandpit!",
+"Weather Forecast"  :  "Weather Forecasts",
+"Western Australian Entrepeneurial Prize"  :  None,
+"Western Australian Solution Prize"  :  None,
+"Whanganui community hack"  :  None,
+"Fresh Data Hack (API's and Data Services)" : "Fresh Data Hack (APIs and Data Services)"
+}
+
+def rename(string):
+    if string in rename_dict.keys():
+	return rename_dict[string]
+    return string
+
+
+class PrizeCheckPipeline(object):
+    def __init__(self):
+        with open('prizecheck') as f:
+            self.checknames = set([rename(name.strip()) for name in f.readlines() if rename(name) != None])
+
+    def process_item(self, item, spider):
+        if spider.name != 'prizes':
+            return item
+
+        if item['is_category'] or item['prize_name'] in self.checknames:
+            return item
+        else:
+            raise DropItem('item not in checknames file: ' + item['prize_name'])

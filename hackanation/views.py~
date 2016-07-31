@@ -1,0 +1,25 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import RequestContext, loader
+
+from hackanation.models import Projects, Prizes
+
+def index(request):
+    context = {}
+    return render(request, 'hackanation/index.html', context)
+
+def under_rated_prizes(request):
+    '''project_list = Projects.objects.order_by('name')[:5]
+    context = {'project_lis': project_list}
+    return render(request, 'hackanation/prizes.html', context)
+
+    prize_dict = {}
+    for prize in Prizes.objects.all():
+        prize_dict[prize.
+
+    for proj in Projects.objects.all():
+        for i '''
+    pass
+
+def most_loved_prizes(request):
+    pass
