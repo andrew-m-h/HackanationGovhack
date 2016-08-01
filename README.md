@@ -105,7 +105,7 @@ and is usually available from your distros repository.
 Windows and Mac users are encouraged to consult the install instructions [here](http://doc.scrapy.org/en/latest/intro/install.html) however we cannot vouch for them.
 
 <a name="Django"></a>
-#### Django
+### Django
 You can install Django with pip2:
 ```
 pip install Django
