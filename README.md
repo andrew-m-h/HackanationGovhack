@@ -4,15 +4,17 @@ This is a sketch to show the potential such a site could have, however, the back
 be accessed in JSON format at govhack/prizes.json and govhack/projects.json
 
 ## Contents
-1. [Requirments](#SystemRequirements)
+1. [Requirements](#SystemRequirements)
 2. [Installing](#Installing)
 	1. [Python](#InstallingPython2)
 	2. [Scrapy](#InstallingScrapyWebCrawling)
 	3. [Django](#Django)
 	4. [MySQL](#MySQL)
-3. [Using Scrapy Standalone](#StandaloneScrapy)
-	1. [JSON Format](#JSONFormat)
-	2. [Pipelines and Editing](#PipelinesEditing)
+3. [Running everything](#Running)
+	1. [Running the Server](#RunningServer)
+	2. [Using Scrapy Standalone](#StandaloneScrapy)
+		1. [JSON Format](#JSONFormat)
+		2. [Pipelines and Editing](#PipelinesEditing)
 
 <a name="SystemRequirements"></a>
 ## System Requirements 
@@ -103,14 +105,116 @@ and is usually available from your distros repository.
 Windows and Mac users are encouraged to consult the install instructions [here](http://doc.scrapy.org/en/latest/intro/install.html) however we cannot vouch for them.
 
 <a name="Django"></a>
-### Django
-Noah write here
+#### Django
+You can install Django with pip2:
+```
+pip install Django
+```
+
+See [this more comprehensive guide](https://docs.djangoproject.com/en/1.9/topics/install/) if you have any problems installing Django.
+
 <a name="MySQL"></a>
 ### MySQL
-Noah write here if you need to
+
+#### Ubuntu
+
+Ubuntu users can grab MySQL with:
+```
+apt-get install mysql-server
+```
+
+#### Other platforms
+Other users should follow [this guide](http://dev.mysql.com/doc/refman/5.7/en/installing.html).
+
+
+
+#### Databse Setup
+
+You should then create the databse `hackanation` (replacing `root` with the username you've set):
+```
+$ mysql.server start
+$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1
+Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
+mysql>
+mysql> CREATE DATABASE django_db;
+Query OK, 1 row affected (0.01 sec)
+mysql>
+mysql> quit
+Bye
+```
+
+Grab the Python library with:
+```
+pip2 install MySQL-python
+```
+
+In the project directory `HackanationGovhack`, run
+```
+python manage.py syncdb
+```
+to set up the tables in the database.
+
+The database contains three tables - projects, prizes, and a mapping from projects to prizes.
+
+The hackanation_prizes table is described by the following table:
+
+```
++-------------------+---------------+------+-----+---------+----------------+
+| Field             | Type          | Null | Key | Default | Extra          |
++-------------------+---------------+------+-----+---------+----------------+
+| id                | int(11)       | NO   | PRI | NULL    | auto_increment |
+| website_hash      | varchar(255)  | NO   | UNI | NULL    |                |
+| website           | varchar(1000) | NO   |     | NULL    |                |
+| name              | varchar(255)  | NO   |     | NULL    |                |
+| description       | varchar(2000) | NO   |     | NULL    |                |
+| category          | varchar(200)  | NO   |     | NULL    |                |
+| value             | int(11)       | NO   |     | NULL    |                |
+| value_description | varchar(1000) | NO   |     | NULL    |                |
++-------------------+---------------+------+-----+---------+----------------+
+```
+
+The hackanation_projects table is described by the following table:
+```
++--------------+---------------+------+-----+---------+----------------+
+| Field        | Type          | Null | Key | Default | Extra          |
++--------------+---------------+------+-----+---------+----------------+
+| id           | int(11)       | NO   | PRI | NULL    | auto_increment |
+| name         | varchar(1000) | NO   |     | NULL    |                |
+| region       | varchar(400)  | NO   |     | NULL    |                |
+| event        | varchar(400)  | NO   |     | NULL    |                |
+| team_name    | varchar(200)  | NO   |     | NULL    |                |
+| website_hash | varchar(255)  | NO   | UNI | NULL    |                |
+| website      | varchar(1000) | NO   |     | NULL    |                |
++--------------+---------------+------+-----+---------+----------------+
+```
+
+The hackanation_projects_prizes is described by the following table:
+```
++-------------+---------+------+-----+---------+----------------+
+| Field       | Type    | Null | Key | Default | Extra          |
++-------------+---------+------+-----+---------+----------------+
+| id          | int(11) | NO   | PRI | NULL    | auto_increment |
+| projects_id | int(11) | NO   | MUL | NULL    |                |
+| prizes_id   | int(11) | NO   | MUL | NULL    |                |
++-------------+---------+------+-----+---------+----------------+
+```
+
+<a name="Running"></a>
+## Running everything
+
+<a name="RunningServer"></a>
+### Running the server
+
+Once you've installed everything, you can run the server from the `HackanationGovhack` directory with
+```
+python manage.py runserver
+```
 
 <a name="StandaloneScrapy"></a>
-## Standalone Scrapy
+### Running Standalone Scrapy
 The scrapy crawler is located in the govhack/ directory. It can be used as a standalone program to generate json objects or it can be used in conjunction with the django framework to fill a mysql database.
 
 To use standalone, you must disable the 'pipelines' that write output to a database. This is easily done, from the govhack/ directory, edit the file govhack/settings.py and change the lines that read:
