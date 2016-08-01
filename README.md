@@ -4,7 +4,7 @@ This is a sketch to show the potential such a site could have, however, the back
 be accessed in JSON format at govhack/prizes.json and govhack/projects.json
 
 ## Contents
-1. [Requirments](#SystemRequirements)
+1. [Requirements](#SystemRequirements)
 2. [Installing](#Installing)
 	1. [Python](#InstallingPython2)
 	2. [Scrapy](#InstallingScrapyWebCrawling)
@@ -160,6 +160,8 @@ to set up the tables in the database.
 The database contains three tables - projects, prizes, and a mapping from projects to prizes.
 
 The hackanation_prizes table is described by the following table:
+
+```
 +-------------------+---------------+------+-----+---------+----------------+
 | Field             | Type          | Null | Key | Default | Extra          |
 +-------------------+---------------+------+-----+---------+----------------+
@@ -172,8 +174,10 @@ The hackanation_prizes table is described by the following table:
 | value             | int(11)       | NO   |     | NULL    |                |
 | value_description | varchar(1000) | NO   |     | NULL    |                |
 +-------------------+---------------+------+-----+---------+----------------+
+```
 
 The hackanation_projects table is described by the following table:
+```
 +--------------+---------------+------+-----+---------+----------------+
 | Field        | Type          | Null | Key | Default | Extra          |
 +--------------+---------------+------+-----+---------+----------------+
@@ -185,8 +189,10 @@ The hackanation_projects table is described by the following table:
 | website_hash | varchar(255)  | NO   | UNI | NULL    |                |
 | website      | varchar(1000) | NO   |     | NULL    |                |
 +--------------+---------------+------+-----+---------+----------------+
+```
 
 The hackanation_projects_prizes is described by the following table:
+```
 +-------------+---------+------+-----+---------+----------------+
 | Field       | Type    | Null | Key | Default | Extra          |
 +-------------+---------+------+-----+---------+----------------+
@@ -194,6 +200,7 @@ The hackanation_projects_prizes is described by the following table:
 | projects_id | int(11) | NO   | MUL | NULL    |                |
 | prizes_id   | int(11) | NO   | MUL | NULL    |                |
 +-------------+---------+------+-----+---------+----------------+
+```
 
 <a name="Running"></a>
 ## Running everything
