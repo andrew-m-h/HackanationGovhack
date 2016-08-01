@@ -4,20 +4,23 @@ This is a sketch to show the potential such a site could have, however, the back
 be accessed in JSON format at govhack/prizes.json and govhack/projects.json
 
 ## Contents
-1. [Requirments](#System\ Requirements)
-2. [Installing](#Installing)
-*  [Python](#Python2)
-*  [Scrapy](#Scrapy\ Web\ Crawling)
+1. [Requirments](#id-SystemRequirements)
+2. [Installing](#id-Installing)
+*  [Python](#id-InstallingPython2)
+*  [Scrapy](#id-InstallingScrapyWebCrawling)
 *  [Django](#Django)
 *  [MySQL](#MySQL)
 3. [Using Scrapy Standalone](#Standalone\ Scrapy)
 *  [JSON Format](#JSON\ Format)
 
+<div id="SystemRequirements"/>
 ## System Requirements
 This system has been tested on ubuntu 16.04, however its built atop tools which should work on ANY unix system, and, with a bit of luck, windows. While python is platform inspecific, we advise using a [virtualbox](https://www.virtualbox.org/) with [ubuntu 16.04](http://releases.ubuntu.com/16.04/) installed to make the installation process much easier.
 
+<div id="Installing"/>
 ## Installing
 
+<div id="InstallingPython2"/>
 ### Python2
 Python is the lanugage upon which this app is built. You must also install the python2 package manager, pip2.
 #### Linux
@@ -37,8 +40,7 @@ python2 get-pip.py
 #### Windows
 Python2 and pip2 must be downloaded and installed from [here](https://www.python.org/downloads/release/python-2712/), use the get-pip.py script from above to install pip2. Further instructions are [here](https://pip.pypa.io/en/stable/installing/).
 
-
-
+<div id="InstallingScrapyWebCrawling"/>
 ### Scrapy Web Crawling
 Scrapy is the framework used to crawl the govhack hackerspace and prizes websites to find all the prize and team data. This can be done standalone or within the context of this web app.
 
