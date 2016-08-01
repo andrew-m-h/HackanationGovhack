@@ -4,24 +4,25 @@ This is a sketch to show the potential such a site could have, however, the back
 be accessed in JSON format at govhack/prizes.json and govhack/projects.json
 
 ## Contents
-1. [Requirments](#id-SystemRequirements)
-2. [Installing](#id-Installing)
-*  [Python](#id-InstallingPython2)
-*  [Scrapy](#id-InstallingScrapyWebCrawling)
-*  [Django](#Django)
-*  [MySQL](#MySQL)
-3. [Using Scrapy Standalone](#Standalone\ Scrapy)
-*  [JSON Format](#JSON\ Format)
+1. [Requirments](#SystemRequirements)
+2. [Installing](#Installing)
+	1. [Python](#InstallingPython2)
+	2. [Scrapy](#InstallingScrapyWebCrawling)
+	3. [Django](#Django)
+	4. [MySQL](#MySQL)
+3. [Using Scrapy Standalone](#StandaloneScrapy)
+	1. [JSON Format](#JSONFormat)
+	2. [Pipelines and Editing](#PipelinesEditing)
 
-<div id="SystemRequirements"/>
-## System Requirements
+<a name="SystemRequirements"></a>
+## System Requirements 
 This system has been tested on ubuntu 16.04, however its built atop tools which should work on ANY unix system, and, with a bit of luck, windows. While python is platform inspecific, we advise using a [virtualbox](https://www.virtualbox.org/) with [ubuntu 16.04](http://releases.ubuntu.com/16.04/) installed to make the installation process much easier.
 
-<div id="Installing"/>
-## Installing
+<a name="Installing"></a>
+## Installing 
 
-<div id="InstallingPython2"/>
-### Python2
+<a id="InstallingPython2"></a>
+### Python2 
 Python is the lanugage upon which this app is built. You must also install the python2 package manager, pip2.
 #### Linux
 Ubuntu comes with python2 and pip2 pre-installed, check this with
@@ -40,8 +41,8 @@ python2 get-pip.py
 #### Windows
 Python2 and pip2 must be downloaded and installed from [here](https://www.python.org/downloads/release/python-2712/), use the get-pip.py script from above to install pip2. Further instructions are [here](https://pip.pypa.io/en/stable/installing/).
 
-<div id="InstallingScrapyWebCrawling"/>
-### Scrapy Web Crawling
+<a name="InstallingScrapyWebCrawling"></a>
+### Scrapy Web Crawling 
 Scrapy is the framework used to crawl the govhack hackerspace and prizes websites to find all the prize and team data. This can be done standalone or within the context of this web app.
 
 #### Linux
@@ -101,12 +102,14 @@ and is usually available from your distros repository.
 #### Windows and OSX
 Windows and Mac users are encouraged to consult the install instructions [here](http://doc.scrapy.org/en/latest/intro/install.html) however we cannot vouch for them.
 
+<a name="Django"></a>
 ### Django
 Noah write here
-
+<a name="MySQL"></a>
 ### MySQL
 Noah write here if you need to
 
+<a name="StandaloneScrapy"></a>
 ## Standalone Scrapy
 The scrapy crawler is located in the govhack/ directory. It can be used as a standalone program to generate json objects or it can be used in conjunction with the django framework to fill a mysql database.
 
@@ -129,6 +132,8 @@ It is then a simple matter to re-generate either the prizes.json or projects.jso
 scrapy crawl prizes -o prizes.json
 scrapy crawl govhack -o projects.json
 ```
+
+<a name="JSONFormat"></a>
 #### JSON Format
 ##### prizes.json
 prizes.json exports two types of records, a set of records linking prize categories to prizes within them, and a set of records linking prize names to the attributes of that prize such as website, description, value and so on.
@@ -157,6 +162,6 @@ and a corresponding website->prizes mapping record looks like this:
 ```
 {"website": "https://2016.hackerspace.govhack.org/content/hackanation", "is_user": false, "prizes": ["ABS - That thing we all need", "Fresh Data Hack (API\u2019s and Data Services)", "Best Data Wrangling", "Best in ACT", "Best Tertiary Hacker Team"]}
 ```
-
+<a name="PipelinesEditing"></a>
 #### Pipelines and editing
 The scrapy crawlers use pipelines described [here](http://doc.scrapy.org/en/latest/topics/item-pipeline.html) to edit the data before outputting it. You can see three pipelines used in this project in the govhack/govhack/ directory. They are 'project_pipeline.py', which inserts the projects into the database, 'prizes_pipeline.py' which inserts the prizes into the database, and prizecheck_pipeline.py which does some editing of the prizes records to fix spelling mistakes and errors in the data as well as verifying it.
