@@ -72,7 +72,7 @@ class ProjectsPipeline(object):
             project, created  = Projects.objects.get_or_create(website_hash=md5(item["website"]))
 
             project.name      = get_attr(item,"project_name")
-            project.website   = get_attr(item,"website")[0]
+            project.website   = get_attr(item,"website")
             project.region    = get_attr(item,"region")
             project.event     = get_attr(item,"local_event")
             project.team_name = get_attr(item,"team_name")

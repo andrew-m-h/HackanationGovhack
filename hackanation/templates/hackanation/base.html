@@ -17,7 +17,7 @@
       </div>
       <div class="button-footer btnf-red"> </div>
     </div>
-    <div class="button button-blue">
+    <div class="button button-blue" id="data-btn">
       <div class="button-content">
         <h2 class="button-title">Explore the data</h2>
         <p class="button-text">Data, metadata, metametadata, and so on</p>
@@ -64,7 +64,10 @@
       home(ev);
   });
   $('#prize-btn').click( function(ev){
-      load("under-rated-prizes");
+      load("/under-rated-prizes");
+  });
+  $('#data-btn').click( function(ev){
+      load("/data");
   });
 </script>
 

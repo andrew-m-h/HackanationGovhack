@@ -24,7 +24,7 @@
 {% for project in projects %}
       <div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}" style="width: 150px">
         <div class="box-left">
-          <p class="box-left-title" style="margin-right:50px"><a href="{{ project.webite }}" style="text-decoration: none; color: inherit;">{{ project.name }}</a></p>
+          <p class="box-left-title" style="margin-right:50px"><a style="text-decoration: none; color: inherit;"  href="{{ project.website }}"  >{{ project.name }}</a></p>
 	  <p class="box-left-txt" style="margin-right:50px;">{{ project.team_name }}</p>
 	</div>
 </div>

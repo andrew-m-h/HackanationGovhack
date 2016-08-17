@@ -1,0 +1,233 @@
+
+{% load staticfiles %}
+
+{% include "hackanation/base.html" %}
+
+
+<script src="https://noahingham.com/app/rnutjs/lib/alertjs/sweet-alert.min.js"></script>
+<link rel="stylesheet" href="https://noahingham.com/app/rnutjs/lib/alertjs/sweet-alert.css" />
+
+
+
+<link href="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.5.0/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+
+<script src="https://npmcdn.com/masonry-layout@4.1/dist/masonry.pkgd.min.js"></script>
+
+<div id="right">
+
+  <div id="right-title-bg">
+      <span style="color:#555;font-size:24px;font-weight:100;">The Hackerspace site will be recrawled in:</span> <br />
+    <div style="font-size:20px;margin-top:20px;height:120px; width: calc( 100% - 120px );background-color:#fff;float:left;min-width:120px" class="box">
+      <h1 style="text-align:center;margin-top:10px;font-size:90px;" id="timer">00:00</h1>
+    </div>
+	<form method="get" action= {% static "hackerspace.zip" %}>
+    <button id="dl-btn" style="font-size:20px;height:120px;width:120px;float:left;margin-top:20px;background-color:#3789B0;color:white;border:2px solid #6DB3D5; text-align:center;">
+<div id="dl-txt">
+	<span style="padding-top:10px">
+	<i class="fa fa-cloud-download" style="font-size:40px" aria-hidden="true"></i><br />Download</span>
+</div>
+<div id="dl-crawl" style="display:none;">
+	<span style="padding-top:10px">
+	<i class="fa fa-refresh" style="font-size:40px" aria-hidden="true"></i><br />Crawling...</span>
+</div>
+	</div>
+	</form>
+  </button>
+
+
+<div id="right-content" style="margin-top: 130px; color:#555;">
+<p>See what people have done with this data:</p>
+
+<div id="right-content-inner" class="grid" style="margin-top:10px;">
+
+
+<a class="box-link" href="#" data-featherlight="#mylightbox-1">
+<div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}">
+  <div class="box-left-left">
+    <img src= {% static "hackanation/images/dash1.png" %} style="height:100px;width:100px;" />
+  </div>
+  <div class="box-left">
+    <p class="box-left-title">
+	
+          <img src= {% static "hackanation/images/dash.png" %} style="width:15px" title="This prize is open to non-coders through the -Dash- project" onclick="dash()" class="dash-btn"/>
+          -Dash- #1
+
+	<div class="lightbox" id="mylightbox-1">
+          <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 90vw; height: 90vh;'><noscript><a href='#'><img alt='Sheet 2 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation1&#47;Sheet2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='90vw' height='90vh' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='Hackanation1&#47;Sheet2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation1&#47;Sheet2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+        </div>
+    </p>
+    <p class="box-left-text">
+      This graph plots each region's prizes by its number of teams with a <b>bubble chart</b>.
+    </p>
+  </div>
+</div>
+</a>
+
+
+
+
+
+<a class="box-link" href="#" data-featherlight="#mylightbox-2">
+<div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}">
+  <div class="box-left-left">
+    <img src= {% static "hackanation/images/dash2.png" %} style="height:100px;width:100px;" />
+  </div>
+  <div class="box-left">
+    <p class="box-left-title">
+	
+          <img src= {% static "hackanation/images/dash.png" %} style="width:15px" title="This prize is open to non-coders through the -Dash- project" onclick="dash()" class="dash-btn"/>
+        -Dash- #2
+
+	<div class="lightbox" id="mylightbox-2">
+          <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 90vw; height: 90vh;'><noscript><a href='#'><img alt='Sheet 3 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation2&#47;Sheet3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='90vw' height='90vh' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='Hackanation2&#47;Sheet3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation2&#47;Sheet3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+        </div>
+    </p>
+    <p class="box-left-text">
+      This graph plots each region's prizes by its number of teams with a <b>treemap</b>.
+    </p>
+  </div>
+</div>
+</a>
+
+
+
+<a class="box-link" href="#" data-featherlight="#mylightbox-3">
+<div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}">
+  <div class="box-left-left">
+    <img src= {% static "hackanation/images/dash3.png" %} style="height:100px;width:100px;" />
+  </div>
+  <div class="box-left">
+    <p class="box-left-title">
+	
+          <img src= {% static "hackanation/images/dash.png" %} style="width:15px" title="This prize is open to non-coders through the -Dash- project" onclick="dash()" class="dash-btn"/>
+	-Dash- #3
+
+	<div class="lightbox" id="mylightbox-3">
+          <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 85vh; height: 90vh;'><noscript><a href='#'><img alt='Sheet 4 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation3&#47;Sheet4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='85vh' height='90vh' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='Hackanation3&#47;Sheet4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation3&#47;Sheet4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+        </div>
+    </p>
+    <p class="box-left-text">
+      This graph plots each region's prizes by its number of  teams with a <b>box & whisker plot</b>.
+    </p>
+  </div>
+</div>
+</a>
+
+
+<a class="box-link" href="#" data-featherlight="#mylightbox-4">
+<div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}">
+  <div class="box-left-left">
+    <img src= {% static "hackanation/images/dash4.png" %} style="height:100px;width:100px;" />
+  </div>
+  <div class="box-left">
+    <p class="box-left-title">
+	
+          <img src= {% static "hackanation/images/dash.png" %} style="width:15px" title="This prize is open to non-coders through the -Dash- project" onclick="dash()" class="dash-btn"/>
+	-Dash- #4
+
+	<div class="lightbox" id="mylightbox-4">
+          <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script><div class='tableauPlaceholder' style='width: 90vw; height: 90vh;'><noscript><a href='#'><img alt='Sheet 5 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation4&#47;Sheet5&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' width='90vw' height='90vh' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='site_root' value='' /><param name='name' value='Hackanation4&#47;Sheet5' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ha&#47;Hackanation4&#47;Sheet5&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div>
+        </div>
+    </p>
+    <p class="box-left-text">
+       This graph compares <b>each team</b> with its number of prizes it's targeting.
+    </p>
+  </div>
+</div>
+</a>
+
+
+
+  </div>
+</div>
+</div>
+
+<script>
+    $('.grid').masonry({
+      // options
+      itemSelector: '.grid-item',
+      columnWidth: 320
+     });
+</script>
+
+
+
+
+<script>
+$(document).ready(function(){
+
+  $("#dropdown.subnav").parent().append("<span></span>"); //Only shows drop down trigger when js is enabled (Adds empty span tag after ul.subnav*)
+  
+  $("#dropdown").click(function() { //When trigger is clicked...
+   alert("a"); 
+    //Following events are applied to the subnav itself (moving subnav up and down)
+    $("#dropdown.subnav").slideDown('fast').show(); //Drop down the subnav on click
+
+    $(this).parent().hover(function() {
+    }, function(){  
+      $(this).parent().find("#dropdown.subnav").slideUp('slow'); //When the mouse hovers out of the subnav, move it back up
+    });
+
+    //Following events are applied to the trigger (Hover events for the trigger)
+    }).hover(function() { 
+      $(this).addClass("subhover"); //On hover over, add class "subhover"
+    }, function(){  //On Hover Out
+      $(this).removeClass("subhover"); //On hover out, remove class "subhover"
+  });
+
+});
+
+function jsFunction() {
+ var val = $("#dropper").val();
+  if(val=="under-rated") {
+    load("/under-rated-prizes");
+  } else if(val=="loved") {
+    load("/loved-prizes");
+  } else if(val=="rewarded") {
+    load("/rewarded-prizes");
+  }
+}
+ // $('#dl-btn').click( function(ev){
+  //  alert("aaa");
+  // });
+function dash() {
+swal({   title: "Open and accesible",   text: "This project is easily open to non-coders through the <a href='https://2016.hackerspace.govhack.org/content/dash'>-Dash- project</a>!" , html:true });
+}
+
+var sec = 0;
+var counter = setInterval(function(){
+    var d = new Date();
+    var n = d.getMinutes();
+    var s = d.getSeconds();
+    var count_n = 4-n%5;
+    var count_s = 59-s;
+    if(count_s<10) { count_s="0"+count_s; }
+
+    if(count_n==4 && count_s>40) {
+       $("#dl-txt").hide();
+       $("#dl-crawl").show();
+    } else {
+       $("#dl-txt").show();
+       $("#dl-crawl").hide();
+
+    }
+       $("#timer").text("0"+count_n+":"+count_s);
+
+    // Your code
+    
+    sec++;
+}, 1000);
+
+</script>
+<style>
+.dash-btn:hover {
+	cursor: pointer;
+}
+#dl-btn:hover {
+	cursor: pointer;
+}
+</style>

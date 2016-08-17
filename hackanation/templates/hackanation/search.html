@@ -16,31 +16,13 @@
 
 
   <div id="right-title-bg">
-    <h1 id="right-title"><i>The most 
-        <select id="dropper" onchange="mostSelector()">
-          <option {% if page == "under-rated" %} selected="selected" {% endif %}>under-rated</option>
-          <option {% if page == "loved" %} selected="selected" {% endif %}>loved</option>
-          <option {% if page == "rewarded" %} selected="selected" {% endif %}>rewarded</option>
-        </select>
-        <i class="fa fa-blue fa-angle-down" aria-hidden="true"></i>
-        prizes</i>
-	</h2>
-
-    <p style="font-weight:100;color:#999;font-size:12px;margin-top:-10px;">Explore data that has the least competiton, the most teams working on it or the largest prize</p>
-
-    <div id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></div>
-  </div>
+    <h1 id="right-title"><i>Search prizes:</i></h1>
+    <input type="text" style="font-size:20px;margin-top:10px;height:40px; width: 80%;" placeholder="Project name, description, category, etc."  />
+    <button class="search-btn" style="height:40px;width:20%;float:right;margin-top:10px;background-color:#3789B0;color:white;border:2px solid #6DB3D5; text-align:center;"><span style="padding-top:10px">Search</span></div>
+  </button>
 
 
-<h4 style="padding-left:50px;padding-bottom:0;margin-bottom:-10px;margin-top:30px;">Category: <span style="color:#3789B0">
-<select id="location" onchange="locSelector()">
-  <option {% if location == "Everywhere" %} selected="selected" {% endif %}>Everywhere</option>
-  <option {% if location == "International" %} selected="selected" {% endif %}>International</option>
-  <option {% if location == "Australia" %} selected="selected" {% endif %}>Australia</option>
-  <option {% if location == "New Zealand" %} selected="selected" {% endif %}>New Zealand</option>
-  <option {% if location == "Australian Capital Territory" %} selected="selected" {% endif %}>Australian Capital Territory</option>
-</select>
-<i class="fa fa-blue fa-angle-down" aria-hidden="true"></i></span></h4>
+<h4 style="padding-left:50px;padding-bottom:0;margin-bottom:-10px;margin-top:30px;">Category: <span style="color:#3789B0">Everywhere<i class="fa fa-blue fa-angle-down" aria-hidden="true"></i></span></h4>
   <div id="right-content" class="grid">
 
 
@@ -49,7 +31,7 @@
       <div  class="box grid-item {% if page == "rewarded" %} box-green{% endif %}">
         <div class="box-left">
           <p class="box-left-title">
-
+		
           {% if project.0.category == "Major Category Prizes" or project.0.category == "International Prizes" or project.0.category == "Bounty Prizes" %}
           <img src= {% static "hackanation/images/dash.png" %} style="width:15px" title="This prize is open to non-coders through the -Dash- project" onclick="dash()" class="dash-btn"/>
 
@@ -73,7 +55,7 @@
       </div>
     {% endfor %}
 {% else %}
-    <p>No prizes are available.</p>
+    <p>The search function will be coming soon.</p>
 {% endif %}
   </div>
 </div>
@@ -113,7 +95,7 @@ $(document).ready(function(){
 
 });
 
-function mostSelector() {
+function jsFunction() {
  var val = $("#dropper").val();
   if(val=="under-rated") {
     load("/under-rated-prizes");
@@ -122,10 +104,6 @@ function mostSelector() {
   } else if(val=="rewarded") {
     load("/rewarded-prizes");
   }
-}
-function locSelector() {
- var val = $("#location").val();
-    load("?loc="+val);
 }
   $('#search-btn').click( function(ev){
       load("/search");
@@ -136,6 +114,9 @@ swal({   title: "Open and accesible",   text: "This project is easily open to no
 </script>
 <style>
 .dash-btn:hover {
+	cursor: pointer;
+}
+.search-btn:hover {
 	cursor: pointer;
 }
 </style>
